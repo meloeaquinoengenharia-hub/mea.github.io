@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melo & Aquino Engenharia | Soluções Completas em Vistorias, Laudos e Projetos</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86ab;
+            --accent: #d4af37;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #246a91;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        
+        .logo-subtitle {
+            font-size: 12px;
+            color: var(--dark);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.85), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Serviços */
+        .services {
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--primary);
+            color: white;
+            font-size: 2.5rem;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Sobre */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Por que nos escolher */
+        .why-us {
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.3rem;
+        }
+        
+        /* Contato */
+        .contact {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .contact h2, .contact h3 {
+            color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info, .contact-form {
+            flex: 1;
+        }
+        
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: var(--accent);
+        }
+        
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .logo-main {
+                font-size: 20px;
+            }
+            
+            .logo-subtitle {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-main">Melo & Aquino <span>Engenharia</span></div>
+                <div class="logo-subtitle">Soluções Completas em Vistorias, Laudos e Projetos</div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#why-us">Diferenciais</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Melo & Aquino Engenharia</h1>
+            <p>Soluções completas em vistorias, laudos técnicos, projetos e regularização de imóveis. Expertise técnica e compromisso com a qualidade.</p>
+            <a href="#contact" class="btn">Solicitar Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos soluções técnicas especializadas para garantir a segurança e conformidade do seu imóvel</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <div class="service-content">
+                        <h3>Vistorias Técnicas</h3>
+                        <p>Vistorias detalhadas para compra e venda, locação, seguro, transferência de propriedade e outras finalidades.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <div class="service-content">
+                        <h3>Laudos Técnicos</h3>
+                        <p>Elaboração de laudos técnicos para diversas finalidades, incluindo avaliações, perícias e verificações de conformidade.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📐</div>
+                    <div class="service-content">
+                        <h3>Projetos Técnicos</h3>
+                        <p>Desenvolvimento de projetos arquitetônicos, estruturais, elétricos, hidrossanitários e de prevenção contra incêndio.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✅</div>
+                    <div class="service-content">
+                        <h3>Regularização de Imóveis</h3>
+                        <p>Auxílio completo na regularização de imóveis junto aos órgãos competentes, incluindo habite-se e outras documentações.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <div class="service-content">
+                        <h3>Inspeções Prediais</h3>
+                        <p>Inspeções detalhadas em edificações para identificar problemas estruturais, elétricos, hidráulicos e outros.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <div class="service-content">
+                        <h3>Consultoria Técnica</h3>
+                        <p>Orientação especializada sobre manutenção, reformas e adequações em imóveis residenciais e comerciais.</p>
+                        <a href="#contact" class="btn btn-secondary">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Melo & Aquino Engenharia: Expertise e Compromisso</h3>
+                    <p>Há mais de 15 anos no mercado, a Melo & Aquino Engenharia se consolidou como referência em soluções técnicas para imóveis residenciais, comerciais e industriais.</p>
+                    <p>Nossa equipe é composta por engenheiros civis, arquitetos e técnicos altamente qualificados, com vasta experiência em vistorias, laudos técnicos, projetos e regularização de imóveis.</p>
+                    <p>Atendemos em todo o território nacional, com serviços realizados in loco conforme a necessidade do cliente, garantindo praticidade e comodidade.</p>
+                    <a href="#contact" class="btn">Entre em Contato</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Equipe de engenheiros da Melo & Aquino">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Por que nos escolher -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Por que Escolher a Melo & Aquino?</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Agilidade</h3>
+                    <p>Atendimento rápido e eficiente, com prazos otimizados para atender suas necessidades.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Precisão Técnica</h3>
+                    <p>Laudos e relatórios detalhados com informações precisas e confiáveis.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👨‍💼</div>
+                    <h3>Experiência Comprovada</h3>
+                    <p>Mais de 15 anos de atuação no mercado com centenas de projetos realizados.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h3>Preço Justo</h3>
+                    <p>Serviços de alta qualidade com preços competitivos e transparentes.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📞</div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Contato direto com nossos engenheiros para um atendimento personalizado.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Serviço In Loco</h3>
+                    <p>Realizamos visitas técnicas conforme necessidade, em todo território nacional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Solicite um orçamento ou tire suas dúvidas</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Telefone/WhatsApp</h4>
+                            <p>(98) 99120-4155</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>meloeaquinoengenharia@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">🌎</div>
+                        <div>
+                            <h4>Área de Atuação</h4>
+                            <p>Atendemos em todo território nacional com serviços realizados in loco conforme necessidade.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Solicite um Orçamento</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Serviço de Interesse</label>
+                            <select id="service">
+                                <option value="">Selecione um serviço</option>
+                                <option value="vistoria">Vistoria Técnica</option>
+                                <option value="laudo">Laudo Técnico</option>
+                                <option value="projeto">Projeto Técnico</option>
+                                <option value="regularizacao">Regularização</option>
+                                <option value="inspecao">Inspeção Predial</option>
+                                <option value="consultoria">Consultoria</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" placeholder="Descreva brevemente sua necessidade..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Melo & Aquino Engenharia</h3>
+                    <p>Soluções completas em vistorias, laudos técnicos, projetos e regularização de imóveis. Expertise técnica e compromisso com a qualidade.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">f</a>
+                        <a href="#" title="Instagram">ig</a>
+                        <a href="#" title="LinkedIn">in</a>
+                        <a href="https://wa.me/5598991204155" title="WhatsApp">wa</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#services">Vistorias Técnicas</a></li>
+                        <li><a href="#services">Laudos Técnicos</a></li>
+                        <li><a href="#services">Projetos Técnicos</a></li>
+                        <li><a href="#services">Regularização de Imóveis</a></li>
+                        <li><a href="#services">Inspeções Prediais</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#why-us">Diferenciais</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>📞 (98) 99120-4155</li>
+                        <li>✉️ meloeaquinoengenharia@gmail.com</li>
+                        <li>🕒 Seg-Sex: 8h-18h</li>
+                        <li>🌎 Atendimento em todo território nacional</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Melo & Aquino Engenharia - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Obrigado pelo seu contato! Em breve retornaremos.');
+            contactForm.reset();
+        });
+
+        // Link do WhatsApp
+        const whatsappLink = document.querySelector('a[title="WhatsApp"]');
+        whatsappLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.open('https://wa.me/5598991204155', '_blank');
+        });
+    </script>
+</body>
+</html>
